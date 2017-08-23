@@ -1,0 +1,12 @@
+php_value upload_max_filesize 100M
+php_value max_input_vars 100000
+php_value max_execution_time 300
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+DirectoryIndex index.php
+
+RewriteRule .* index.php/$0 [PT,L]
+RewriteRule  ^/?ajax/(.*)$	ajax.php?$1 [NC,QSA,L]
